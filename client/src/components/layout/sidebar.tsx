@@ -98,22 +98,28 @@ export function SidebarContent({ currentView, onViewChange }: SidebarContentProp
         </div>
 
         <nav className="px-2 space-y-1 mt-6">
-          <div className="px-3 text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Favorites</div>
-          <SidebarItem icon={Inbox} label="Inbox" count={4} />
+          <div className="px-3 text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">
+            Favorites
+          </div>
+
+          {/* Home / Inbox */}
+          <SidebarItem 
+            icon={Inbox} 
+            label="Inbox" 
+            count={4}
+            active={currentView === 'board'}
+            onClick={() => onViewChange?.('board')} 
+          />
+
+          {/* Toggle view */}
           <SidebarItem 
             icon={LayoutGrid} 
             label="Views" 
-            active={currentView === 'board' || currentView === 'list'}
+            active={currentView === 'list'}
             onClick={() => onViewChange?.(currentView === 'list' ? 'board' : 'list')}
           />
-          <SidebarItem icon={BookOpen} label="Blog" />
-        </nav>
 
-        <nav className="px-2 space-y-1 mt-8">
-          <div className="px-3 text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Your Teams</div>
-          <SidebarItem icon={Users} label="Product" />
-          <SidebarItem icon={BarChart3} label="Engineering" />
-          <SidebarItem icon={LayoutGrid} label="Design" />
+          <SidebarItem icon={BookOpen} label="Blog" />
         </nav>
       </ScrollArea>
 
@@ -123,9 +129,6 @@ export function SidebarContent({ currentView, onViewChange }: SidebarContentProp
         </div>
 
         <div className="flex justify-center gap-4 pt-2 border-t border-slate-200 dark:border-slate-800">
-          <a href="https://signal.me/#eu/wAyIvLXgD3eJbV5qY9VR6Eco79NLQ1y2gIV9c6y9oy0z76HHl55GHrbl5F0w7bR9" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="Signal" data-testid="link-signal">
-            <SignalIcon className="w-4 h-4" />
-          </a>
           <a href="https://github.com/pavlenex" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="GitHub" data-testid="link-github">
             <Github className="w-4 h-4" />
           </a>

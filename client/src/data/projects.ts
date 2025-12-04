@@ -15,16 +15,16 @@ export const projects: Project[] = [
     title: 'Spiral',
     status: 'current',
     tags: ['Grantee', 'Bitcoin'],
-    description: 'Open source development kit for Bitcoin wallet interfaces.',
-    link: '#'
+    description: 'Block Inc subsidiary supporting open source development that advances Bitcoin.',
+    link: 'https://spiral.xyz'
   },
   {
     id: '2',
     title: 'BTCPay Server',
     status: 'in-progress',
     tags: ['Product Strategy', 'Bitcoin', 'Payments'],
-    description: 'Self-hosted, open-source cryptocurrency payment processor.',
-    link: '#'
+    description: 'The best way to accept Bitcoin in person or online. No fees. Self-hosted, open-source Bitcoin payment infrastructure.',
+    link: 'https://btcpayserver.org'
   },
   {
     id: '3',
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     tags: ['Bitcoin', 'Mining', 'Protocol'],
     description: 'Next generation protocol for pooled mining.',
-    link: '#'
+    link: 'https://stratumprotocol.org'
   },
   {
     id: '4',
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     status: 'completed',
     tags: ['Design', 'Open Source'],
     description: 'Community growing the design ecosystem in Bitcoin.',
-    link: '#'
+    link: 'https://bitcoin.design'
   },
   {
     id: '5',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     status: 'completed',
     tags: ['Non-profit', 'El Salvador'],
     description: 'Providing dental care to communities in El Salvador.',
-    link: '#'
+    link: 'https://bitcoinsmiles.org'
   },
   {
     id: '6',
@@ -56,7 +56,6 @@ export const projects: Project[] = [
     status: 'completed',
     tags: ['E-commerce', 'Bitcoin'],
     description: 'Merchandise store for the Bitcoin community.',
-    link: '#'
   },
   {
     id: '7',
@@ -64,6 +63,5 @@ export const projects: Project[] = [
     status: 'completed',
     tags: ['Research', 'Community'],
     description: 'Community research hub for decentralized technologies.',
-    link: '#'
   }
 ];
