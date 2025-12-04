@@ -1,2 +1,0 @@
-# pavlenex.com
-# pavlenex.com
