@@ -2,24 +2,125 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Pavlenex | Product Manager</title>
-    <meta name="description" content="Product Manager focused on Bitcoin open source. Nine years building payment and mining infrastructure." />
-    <meta property="og:title" content="Pavlenex | Product Manager" />
-    <meta property="og:description" content="Product Manager focused on Bitcoin open source. Nine years building payment and mining infrastructure." />
+    <title>Pavlenex</title>
+    <meta name="description" content="Open-source janitor. A decade in Bitcoin open source, building payment and mining infrastructure." />
+    <meta property="og:title" content="Pavlenex" />
+    <meta property="og:description" content="Open-source janitor. A decade in Bitcoin open source, building payment and mining infrastructure." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pavlenex | Product Manager" />
-    <meta name="twitter:description" content="Product Manager focused on Bitcoin open source. Nine years building payment and mining infrastructure." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Pavlenex" />
+    <meta name="twitter:description" content="Open-source janitor. A decade in Bitcoin open source, building payment and mining infrastructure." />
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)" />
 
     <link rel="icon" type="image/png" href="./favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="min-h-screen bg-bg px-5 pt-12 pb-10 sm:px-10 sm:pt-18 sm:pb-12">
+      <div class="mx-auto max-w-[1060px]">
+        <header class="mx-auto flex max-w-[560px] flex-col items-center text-center">
+          <img src="./assets/pavlenex.jpg" alt="Pavlenex" width="56" height="56" class="size-14 rounded-full object-cover" />
+          <h1 class="mt-7 text-[22px] leading-[1.4] font-semibold tracking-[-0.01em]">I’d like to call myself a product manager. Open-source <a href="https://medium.com/all-things-product-management/product-manager-you-are-664d83ee702e" target="_blank" rel="noopener noreferrer">janitor</a> is probably more accurate.</h1>
+          <p class="mt-4 max-w-[520px] text-left text-[15px] leading-[1.65] text-muted">I’ve spent the past decade in Bitcoin’s open-source trenches, doing whatever needed doing to help turn freedom technology into something useful, resilient, and accessible to people everywhere.</p>
+          <p class="mt-4 max-w-[520px] text-left text-[15px] leading-[1.65] text-muted">I’m best known for my work on <a href="https://btcpayserver.org" target="_blank" rel="noopener noreferrer">BTCPay Server</a> and <a href="https://stratumprotocol.org" target="_blank" rel="noopener noreferrer">Stratum V2</a>, building open-source payment and mining infrastructure used across the Bitcoin ecosystem. My work is currently supported by <a href="https://spiral.xyz" target="_blank" rel="noopener noreferrer">Spiral</a>, a Block, Inc. subsidiary accelerating open money and open intelligence.</p>
+        </header>
+
+        <main>
+          <div class="mt-16 flex items-baseline gap-4 border-b border-line pb-3">
+            <h2 class="text-[12px] font-semibold tracking-[0.12em] uppercase text-fg">Work</h2>
+            <span class="flex-1"></span>
+            <button id="details-toggle" type="button" aria-expanded="false" aria-controls="board" class="-m-2 cursor-pointer p-2 text-[12px] text-muted hover:text-fg">Show details</button>
+          </div>
+
+          <div id="board" class="mt-7 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] items-start gap-12">
+            <section class="min-h-[100px] border-l border-line pl-7" aria-labelledby="col-now">
+              <h3 id="col-now" class="mb-5 text-[13px] font-semibold text-fg">Now</h3>
+              <div class="flex flex-col gap-[22px]">
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/spiral.jpg" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold"><a href="https://spiral.xyz" target="_blank" rel="noopener noreferrer">Spiral</a></h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Block Inc subsidiary supporting open source development that advances Bitcoin.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="min-h-[100px] border-l border-line pl-7" aria-labelledby="col-building">
+              <h3 id="col-building" class="mb-5 text-[13px] font-semibold text-fg">Building</h3>
+              <div class="flex flex-col gap-[22px]">
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/btcpayserver.png" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold"><a href="https://btcpayserver.org" target="_blank" rel="noopener noreferrer">BTCPay Server</a></h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>The best way to accept Bitcoin in person or online. No fees. Self-hosted, open-source Bitcoin payment infrastructure.</p>
+                </article>
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/stratum.png" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold"><a href="https://stratumprotocol.org" target="_blank" rel="noopener noreferrer">Stratum V2</a></h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Next generation protocol for pooled mining.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="min-h-[100px] border-l border-line pl-7" aria-labelledby="col-done">
+              <h3 id="col-done" class="mb-5 text-[13px] font-semibold text-fg">Done</h3>
+              <div class="flex flex-col gap-[22px]">
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/bitcoindesign.png" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold"><a href="https://bitcoin.design" target="_blank" rel="noopener noreferrer">Bitcoin Design</a></h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Community growing the design ecosystem in Bitcoin.</p>
+                </article>
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/bitcoinsmiles.png" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold"><a href="https://bitcoinsmiles.org" target="_blank" rel="noopener noreferrer">Bitcoin Smiles</a></h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Providing dental care to communities in El Salvador.</p>
+                </article>
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/bitcoinshirt.jpg" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold">BitcoinShirt.co</h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Merchandise store for the Bitcoin community.</p>
+                </article>
+                <article>
+                  <div class="flex items-center gap-[9px]">
+                    <img src="./assets/icons/hub21.jpg" alt="" width="18" height="18" class="size-[18px] shrink-0 rounded-[4px] object-cover" />
+                    <h4 class="text-[14px] font-semibold">Hub21</h4>
+                  </div>
+                  <p class="detail mt-[5px] text-[13px] leading-[1.6] text-muted" hidden>Community research hub for decentralized technologies.</p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <footer class="relative mt-22 flex items-center justify-center gap-5 border-t border-line pt-5">
+          <a href="https://github.com/pavlenex" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" class="-m-2 inline-flex p-2 text-muted no-underline hover:text-fg">
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          </a>
+          <a href="https://x.com/pavlenex" target="_blank" rel="noopener noreferrer" title="X" aria-label="X" class="-m-2 inline-flex p-2 text-muted no-underline hover:text-fg">
+            <svg class="size-[15px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+          <a href="mailto:pavlenex@icloud.com" title="Email" aria-label="Email" class="-m-2 inline-flex p-2 text-muted no-underline hover:text-fg">
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          </a>
+          <button id="theme-toggle" type="button" title="Switch theme" aria-label="Switch theme" aria-pressed="false" class="absolute right-0 -m-2 inline-flex cursor-pointer p-2 text-muted hover:text-fg">
+            <svg class="size-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+            <svg class="hidden size-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          </button>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
