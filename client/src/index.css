@@ -4,7 +4,7 @@
   color-scheme: light;
   --bg: #fbfbfa;
   --fg: #161514;
-  --muted: #75716c;
+  --muted: #6b6762;
   --faint: #a8a49e;
   --line: #e8e6e2;
   --status-now: #5b8def;
@@ -16,7 +16,7 @@
   color-scheme: dark;
   --bg: #131211;
   --fg: #e8e6e2;
-  --muted: #a29d97;
+  --muted: #b3aea7;
   --faint: #6c6863;
   --line: #2c2a27;
 }
@@ -52,5 +52,32 @@
   :focus-visible {
     outline: 2px solid var(--fg);
     outline-offset: 2px;
+  }
+
+  #details-toggle[aria-expanded="true"] svg {
+    rotate: 180deg;
+  }
+}
+
+@media (scripting: none) {
+  #theme-toggle,
+  #details-toggle {
+    display: none;
+  }
+
+  .detail[hidden] {
+    display: block;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #55524d;
+    --faint: #75716c;
+  }
+
+  .dark {
+    --muted: #c0bbb4;
+    --faint: #a29d97;
   }
 }
