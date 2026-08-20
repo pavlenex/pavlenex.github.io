@@ -20,16 +20,76 @@
 
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" type="image/png" href="./favicon.png" />
-    <script type="module" crossorigin src="./assets/main-BoWupSNo.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-DLl9fEDl.css">
+    <script type="module" crossorigin src="./assets/main-C-QEDufl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-rIMuuLwK.css">
   </head>
-  <body>
-    <div class="min-h-screen bg-bg px-5 pt-10 pb-10 sm:px-10 sm:pt-12 sm:pb-12">
-      <div class="relative mx-auto max-w-[1060px]">
-        <button id="theme-toggle" type="button" title="Switch theme" aria-label="Switch theme" aria-pressed="false" class="absolute top-0 right-0 -m-2 inline-flex cursor-pointer p-2 text-muted hover:text-fg">
+  <body class="has-play-mode">
+    <div class="global-controls" aria-label="Site controls">
+      <button id="corporate-toggle" type="button" class="corporate-toggle" aria-pressed="true">
+        <span class="corporate-toggle-label">Fun mode: on</span>
+        <span class="corporate-toggle-track" aria-hidden="true"><i></i></span>
+      </button>
+      <button id="theme-toggle" type="button" title="Switch theme" aria-label="Switch theme" aria-pressed="false" class="absolute top-0 right-0 -m-2 inline-flex cursor-pointer p-2 text-muted hover:text-fg">
   <svg class="size-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
   <svg class="hidden size-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
 </button>
+    </div>
+
+    <section id="play-mode" class="play-mode" aria-label="Choose your dancer">
+      <div class="club-room" aria-hidden="true">
+        <div class="club-beam club-beam-left"></div>
+        <div class="club-beam club-beam-right"></div>
+        <div class="club-disco-ball"><i></i></div>
+        <div class="club-speakers club-speakers-left"><i></i><i></i><i></i></div>
+        <div class="club-speakers club-speakers-right"><i></i><i></i><i></i></div>
+        <div class="club-floor"></div>
+      </div>
+
+      <header class="character-copy">
+        <p class="fighter-prompt"><span class="fighter-player">1P</span><span>CHOOSE YOUR DANCER</span></p>
+        <h1 id="character-name">AVO JANITOR</h1>
+        <p id="character-line" class="character-line">He cleans up the backlog nobody else wants.</p>
+      </header>
+
+      <div id="character-selector" class="character-selector">
+        <button id="character-prev" type="button" class="character-arrow character-arrow-prev" aria-label="Previous character">
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <button id="character-stage" type="button" class="character-stage" aria-label="Make Avo Janitor mop the floor">
+          <span class="character-shadow" aria-hidden="true"></span>
+          <svg id="character-image" class="character-art" viewBox="0 0 1101 1429" aria-hidden="true" data-character="avo" focusable="false">
+            <image href="./assets/avo-janitor-DoqQxQmc.avif" width="1101" height="1429" preserveAspectRatio="xMidYMid meet"></image>
+          </svg>
+        </button>
+
+        <button id="character-next" type="button" class="character-arrow character-arrow-next" aria-label="Next character">
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <nav id="character-dock" class="character-dock" aria-label="Choose a dancer">
+        <button type="button" data-character-index="0" aria-label="Choose Avo Janitor" aria-current="true"><img src="./assets/avo-CCIdjcLL.avif" alt="" width="160" height="160" decoding="async" /><span>AVO</span></button>
+        <button type="button" data-character-index="1" aria-label="Choose Apricot Orchestrator"><img src="./assets/apricot-BqGrIivd.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>APRICOT</span></button>
+        <button type="button" data-character-index="2" aria-label="Choose Hatopus"><img src="./assets/hatopus-CCAF8BJL.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>HATOPUS</span></button>
+        <button type="button" data-character-index="3" aria-label="Choose PMstation"><img src="./assets/pm1-Bnepuaq9.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>PMSTATION</span></button>
+        <button type="button" data-character-index="4" aria-label="Choose Routary"><img src="./assets/routary-CBhVq9yK.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>ROUTARY</span></button>
+        <button type="button" data-character-index="5" aria-label="Choose Product Potato"><img src="./assets/potato-qQH9bp00.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>POTATO</span></button>
+      </nav>
+
+      <div class="play-footer">
+        <button id="play-sound" type="button" class="play-sound" aria-pressed="false"><i aria-hidden="true"></i><span>Sound off</span></button>
+        <p class="sr-only">Use the arrow keys or dancer portraits to choose. Activate the large dancer for a special move.</p>
+      </div>
+
+      <p id="character-status" class="sr-only" role="status" aria-live="polite"></p>
+      <div class="club-confetti" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </section>
+
+    <div id="site-shell" class="portfolio-shell min-h-screen bg-bg px-5 pt-10 pb-10 sm:px-10 sm:pt-12 sm:pb-12">
+      <div class="relative mx-auto max-w-[1060px]">
         <header class="mx-auto flex max-w-[620px] items-start gap-3.5">
           <img src="./assets/pavlenex-DeYrCi0M.jpg" alt="Pavlenex" width="44" height="44" class="size-11 shrink-0 rounded-full object-cover" />
           <div class="min-w-0 flex-1">
