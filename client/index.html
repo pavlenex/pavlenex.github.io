@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <title>Pavlenex</title>
     <meta name="description" content="Open-source janitor. A decade in Bitcoin open source, building payment and mining infrastructure." />
@@ -21,8 +21,8 @@
   </head>
   <body class="has-play-mode">
     <div class="global-controls" aria-label="Site controls">
-      <button id="corporate-toggle" type="button" class="corporate-toggle" aria-pressed="true">
-        <span class="corporate-toggle-label">Fun mode: on</span>
+      <button id="corporate-toggle" type="button" class="corporate-toggle" aria-label="Fun" aria-pressed="false">
+        <span class="corporate-toggle-label">Fun off</span>
         <span class="corporate-toggle-track" aria-hidden="true"><i></i></span>
       </button>
       <!-- include:theme-toggle -->
@@ -41,7 +41,7 @@
       <header class="character-copy">
         <p class="fighter-prompt"><span class="fighter-player">1P</span><span>CHOOSE YOUR DANCER</span></p>
         <h1 id="character-name">AVO JANITOR</h1>
-        <p id="character-line" class="character-line">He cleans up the backlog nobody else wants.</p>
+        <p id="character-line" class="character-line">Cleans up the backlog nobody else wants.</p>
       </header>
 
       <div id="character-selector" class="character-selector">
@@ -49,7 +49,7 @@
           <span aria-hidden="true">←</span>
         </button>
 
-        <button id="character-stage" type="button" class="character-stage" aria-label="Make Avo Janitor mop the floor">
+        <button id="character-stage" type="button" class="character-stage" aria-label="Make Avo Janitor mop the floor" aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown">
           <span class="character-shadow" aria-hidden="true"></span>
           <svg id="character-image" class="character-art" viewBox="0 0 1101 1429" aria-hidden="true" data-character="avo" focusable="false">
             <image href="./assets/characters/avo-janitor.avif" width="1101" height="1429" preserveAspectRatio="xMidYMid meet"></image>
@@ -65,14 +65,14 @@
         <button type="button" data-character-index="0" aria-label="Choose Avo Janitor" aria-current="true"><img src="./assets/characters/thumbs/avo.avif" alt="" width="160" height="160" decoding="async" /><span>AVO</span></button>
         <button type="button" data-character-index="1" aria-label="Choose Apricot Orchestrator"><img src="./assets/characters/thumbs/apricot.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>APRICOT</span></button>
         <button type="button" data-character-index="2" aria-label="Choose Hatopus"><img src="./assets/characters/thumbs/hatopus.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>HATOPUS</span></button>
-        <button type="button" data-character-index="3" aria-label="Choose PMstation"><img src="./assets/characters/thumbs/pm1.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>PMSTATION</span></button>
+        <button type="button" data-character-index="3" aria-label="Choose P M Station"><img src="./assets/characters/thumbs/pm1.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>PMSTATION</span></button>
         <button type="button" data-character-index="4" aria-label="Choose Routary"><img src="./assets/characters/thumbs/routary.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>ROUTARY</span></button>
         <button type="button" data-character-index="5" aria-label="Choose Product Potato"><img src="./assets/characters/thumbs/potato.avif" alt="" width="160" height="160" loading="lazy" decoding="async" /><span>POTATO</span></button>
       </nav>
 
       <div class="play-footer">
-        <button id="play-sound" type="button" class="play-sound" aria-pressed="false"><i aria-hidden="true"></i><span>Sound off</span></button>
-        <p class="sr-only">Use the arrow keys or dancer portraits to choose. Activate the large dancer for a special move.</p>
+        <button id="play-sound" type="button" class="play-sound" aria-label="Sound" aria-pressed="false"><i aria-hidden="true"></i><span>Sound off</span></button>
+        <p class="sr-only">Use any arrow key or the dancer portraits to choose. Activate the large dancer for a special move.</p>
       </div>
 
       <p id="character-status" class="sr-only" role="status" aria-live="polite"></p>

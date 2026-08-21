@@ -68,7 +68,7 @@ const characterPool: Character[] = [
   {
     id: "potato",
     name: "PRODUCT POTATO",
-    line: "He makes the plan, then loses it near the bar.",
+    line: "Makes the plan, then loses it near the bar.",
     actionLabel: "Make Product Potato dance",
     actionAnnouncement: "Product Potato dances.",
     image: new URL("../assets/characters/product-potato.avif", import.meta.url).href,
@@ -86,7 +86,7 @@ const characterPool: Character[] = [
   {
     id: "hatopus",
     name: "HATOPUS",
-    line: "He does six jobs and calls it one.",
+    line: "Wears multiple hats, but not quite the right ones.",
     actionLabel: "Make Hatopus juggle the hats",
     actionAnnouncement: "Hatopus juggles the hats.",
     image: new URL("../assets/characters/hatopus.avif", import.meta.url).href,
@@ -106,7 +106,7 @@ const characterPool: Character[] = [
   {
     id: "avo",
     name: "AVO JANITOR",
-    line: "He cleans up the backlog nobody else wants.",
+    line: "Cleans up the backlog nobody else wants.",
     actionLabel: "Make Avo Janitor mop the floor",
     actionAnnouncement: "Avo Janitor mops the floor.",
     image: new URL("../assets/characters/avo-janitor.avif", import.meta.url).href,
@@ -124,9 +124,9 @@ const characterPool: Character[] = [
   {
     id: "pm1",
     name: "PMSTATION",
-    line: "He owns the launch but controls almost nothing.",
-    actionLabel: "Make PMstation power cycle",
-    actionAnnouncement: "PMstation performs a power cycle.",
+    line: "Owns the launch but controls almost nothing.",
+    actionLabel: "Make P M Station power cycle",
+    actionAnnouncement: "P M Station performs a power cycle.",
     image: new URL("../assets/characters/pm-one.avif", import.meta.url).href,
     rig: {
       width: 1103,
@@ -142,7 +142,7 @@ const characterPool: Character[] = [
   {
     id: "routary",
     name: "ROUTARY",
-    line: "He sends every question to the person who can answer it.",
+    line: "Sends every question to the person who can answer it.",
     actionLabel: "Make Routary route a call",
     actionAnnouncement: "Routary routes a call.",
     image: new URL("../assets/characters/routary-phone.avif", import.meta.url).href,
@@ -162,7 +162,7 @@ const characterPool: Character[] = [
   {
     id: "apricot",
     name: "APRICOT ORCHESTRATOR",
-    line: "He keeps a tiny robot team working in time.",
+    line: "Keeps a tiny robot team working in time.",
     actionLabel: "Make Apricot Orchestrator conduct the bots",
     actionAnnouncement: "Apricot Orchestrator conducts the bots.",
     image: new URL("../assets/characters/apricot-orchestrator.avif", import.meta.url).href,
@@ -235,6 +235,7 @@ if (
   let swipePointer: number | null = null;
   let swipeStartX = 0;
   let swipeStartY = 0;
+  let swipeTravel = 0;
   let suppressStageClick = false;
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const midiToFrequency = (note: number) => 440 * 2 ** ((note - 69) / 12);
@@ -254,10 +255,7 @@ if (
   };
 
   const savedSound = readStorage("pv-play-sound");
-  const desktopSoundDefault = matchMedia("(min-width: 761px) and (pointer: fine)").matches;
-  soundEnabled = savedSound === null
-    ? desktopSoundDefault && !reducedMotion.matches
-    : savedSound === "true";
+  soundEnabled = savedSound === null ? true : savedSound === "true";
 
   const savedCharacter = readStorage("pv-character");
   const legacyCharacterIds: Record<string, string> = {
@@ -529,6 +527,11 @@ if (
   };
 
   const triggerSpecialMove = () => {
+    if (reducedMotion.matches) {
+      characterStatus.textContent = characters[currentIndex].actionAnnouncement;
+      audio?.accent();
+      return;
+    }
     if (danceTimer !== null) clearTimeout(danceTimer);
     characterStage.classList.remove("is-dancing");
     void characterStage.offsetWidth;
@@ -547,7 +550,7 @@ if (
     const corporate = !funMode;
     document.documentElement.classList.toggle("corporate", corporate);
     corporateToggle.setAttribute("aria-pressed", String(funMode));
-    corporateToggleLabel.textContent = `Fun mode: ${funMode ? "on" : "off"}`;
+    corporateToggleLabel.textContent = `Fun ${funMode ? "on" : "off"}`;
     if (corporate) {
       playMode.setAttribute("inert", "");
       playMode.setAttribute("aria-hidden", "true");
@@ -598,34 +601,58 @@ if (
     });
   }
 
-  characterSelector.addEventListener("pointerdown", (event) => {
+  characterStage.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.pointerType === "mouse") return;
     swipePointer = event.pointerId;
     swipeStartX = event.clientX;
     swipeStartY = event.clientY;
-    characterSelector.setPointerCapture(event.pointerId);
+    swipeTravel = 0;
+    characterStage.setPointerCapture(event.pointerId);
   });
 
-  characterSelector.addEventListener("pointerup", (event) => {
+  characterStage.addEventListener("pointermove", (event) => {
+    if (event.pointerId !== swipePointer) return;
+    swipeTravel = Math.max(
+      swipeTravel,
+      Math.hypot(event.clientX - swipeStartX, event.clientY - swipeStartY),
+    );
+  });
+
+  characterStage.addEventListener("pointerup", (event) => {
     if (event.pointerId !== swipePointer) return;
     const deltaX = event.clientX - swipeStartX;
     const deltaY = event.clientY - swipeStartY;
     swipePointer = null;
-    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+    if (characterStage.hasPointerCapture(event.pointerId)) {
+      characterStage.releasePointerCapture(event.pointerId);
+    }
+    if (swipeTravel > 10) {
       suppressStageClick = true;
+      window.setTimeout(() => { suppressStageClick = false; }, 80);
+    }
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
       renderCharacter(currentIndex + (deltaX < 0 ? 1 : -1));
-      window.setTimeout(() => { suppressStageClick = false; }, 350);
     }
   });
 
-  characterSelector.addEventListener("pointercancel", () => { swipePointer = null; });
+  characterStage.addEventListener("pointercancel", (event) => {
+    swipePointer = null;
+    if (characterStage.hasPointerCapture(event.pointerId)) {
+      characterStage.releasePointerCapture(event.pointerId);
+    }
+  });
 
   document.addEventListener("keydown", (event) => {
-    if (isCorporate() || event.altKey || event.ctrlKey || event.metaKey) return;
-    if (event.key === "ArrowLeft") {
+    if (
+      isCorporate() ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey
+    ) return;
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
       event.preventDefault();
       renderCharacter(currentIndex - 1);
-    } else if (event.key === "ArrowRight") {
+    } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
       event.preventDefault();
       renderCharacter(currentIndex + 1);
     }

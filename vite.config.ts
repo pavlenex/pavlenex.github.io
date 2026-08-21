@@ -12,6 +12,7 @@ const csp = [
   "img-src 'self'",
   "base-uri 'none'",
   "form-action 'none'",
+  "upgrade-insecure-requests",
 ].join("; ");
 
 export default defineConfig(({ command }) => ({
